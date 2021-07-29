@@ -9,7 +9,7 @@ html {
 body {
     line-height: 1;
     margin: 0;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Style Script', cursive;
 }
 
 a {
@@ -42,6 +42,17 @@ header {
     border-radius: 0 0 25px 25px;
 }
 
+h1{
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: rgb(194, 122, 55);
+}
+
+h2{
+    font-size: 2.5em;
+    color: rgb(194, 122, 55);
+}
+
 .cards-container {
     display: flex;
     justify-content: center;
@@ -55,8 +66,10 @@ footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 25px;
     border: 20px solid #F3E9F1;
     border-radius:  25px;
     min-height: 150px;
+    font-size: 1.6em;
+    color: rgb(194, 122, 55);
 }
