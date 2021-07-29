@@ -1,0 +1,62 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    line-height: 1;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#container {
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+header {
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    background-color: #F3E9F1;
+    border-radius: 25px 25px 0 0;
+}
+
+.bannière {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 20px solid #F3E9F1;
+    border-radius: 0 0 25px 25px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    border: 20px solid #F3E9F1;
+    border-radius:  25px;
+    min-height: 200px;
+    margin: 5px 0;
+}
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border: 20px solid #F3E9F1;
+    border-radius:  25px;
+    min-height: 150px;
+}
