@@ -9,7 +9,7 @@ html {
 body {
     line-height: 1;
     margin: 0;
-    font-family: 'Style Script', cursive;
+    font-family: 'Caveat Brush', cursive;
 }
 
 a {
@@ -45,31 +45,75 @@ header {
 h1{
     font-size: 3.5rem;
     font-weight: 600;
-    color: rgb(194, 122, 55);
+    color: black;
 }
 
 h2{
-    font-size: 2.5em;
-    color: rgb(194, 122, 55);
+    font-size: 2.8em;
+    color: black;
 }
 
-.cards-container {
+.main {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     border: 20px solid #F3E9F1;
     border-radius:  25px;
     min-height: 200px;
     margin: 5px 0;
+    
 }
 
 footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 25px;
+    padding: 0 50px;
     border: 20px solid #F3E9F1;
     border-radius:  25px;
     min-height: 150px;
     font-size: 1.6em;
-    color: rgb(194, 122, 55);
+    color: black);
+}
+
+.footP{
+    margin-bottom: -10px;
+}
+
+.img-container {
+    width: 80%;
+    height: auto;
+    display: flex;
+    border: 20px solid #F3E9F1;
+    border-radius:  40px;
+    margin: 10px auto;
+}
+
+.img-cam{
+    width: 50%;
+    min-height: 346px;
+    border-radius: 20px 0 0 20px;
+    object-fit: cover;
+}
+
+.card-text{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3{
+    font-size: 2rem;
+}
+
+.card-prix{
+    font-size: 3rem;
+}
+
+.productLink{
+    font-size: 1.5rem;
+    background-color: #F3E9F1;
+    padding: 15px;
+    border-radius: 5px;
 }
