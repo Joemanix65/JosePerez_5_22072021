@@ -27,8 +27,10 @@ a {
 
 header {
     width: auto;
+    height: 130px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0 30px;
     background-color: #F3E9F1;
     border-radius: 25px 25px 0 0;
@@ -61,7 +63,17 @@ h2{
     border-radius:  25px;
     min-height: 200px;
     margin: 5px 0;
-    
+    padding-bottom: 40px;
+}
+
+.main-produit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 20px solid #F3E9F1;
+    border-radius: 0 0 25px 25px;
+    min-height: 200px;
+    padding-bottom: 40px;
 }
 
 footer{
@@ -73,7 +85,7 @@ footer{
     border-radius:  25px;
     min-height: 150px;
     font-size: 1.6em;
-    color: black);
+    color: black;
 }
 
 .footP{
@@ -82,16 +94,25 @@ footer{
 
 .img-container {
     width: 80%;
-    height: auto;
+    max-height: 360px;
     display: flex;
-    border: 20px solid #F3E9F1;
+    border: 20px solid #f5dbf0;
     border-radius:  40px;
-    margin: 10px auto;
+    margin: 20px auto;
+}
+
+.img-container-produit{
+    width: 90%;
+    height: 600px;
+    display: flex;
+    border: 20px solid #f5dbf0;
+    border-radius:  40px;
+    margin: 70px auto 40px;
 }
 
 .img-cam{
     width: 50%;
-    min-height: 346px;
+    min-height: 320px;
     border-radius: 20px 0 0 20px;
     object-fit: cover;
 }
@@ -101,6 +122,13 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.card-description{
+    width: 65%;
+    display: flex;
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 h3{
@@ -113,7 +141,44 @@ h3{
 
 .productLink{
     font-size: 1.5rem;
-    background-color: #F3E9F1;
+    background-color: #f5dbf0;
     padding: 15px;
     border-radius: 5px;
+}
+
+.card-prix-produit{
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.input-text{
+    font-size: 1.5rem;
+}
+
+#input1, #input2{
+    font-size: 1.1rem;
+}
+
+.button1, .button2{
+   margin-top: 20px;
+   padding-top: 10px;
+}
+
+.button{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+}
+.button1{
+    margin-right: 180px;
+    background-color: rgb(217, 186, 245);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.button2{
+    
+    background-color: rgb(217, 186, 245);
+    border-radius: 5px;
+    padding: 10px;
 }

@@ -14,6 +14,7 @@ fetch("http://localhost:3000/api/cameras")
                                 <a class="productLink" href="view/produit.html?id=${camera._id}">Plus d'infos</a>
                             </div>
                         </div>`
+                        console.log(camera._id);
         }
         document.querySelector('#produits').innerHTML += affichage
     }))
