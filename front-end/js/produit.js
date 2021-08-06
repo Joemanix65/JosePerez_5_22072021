@@ -19,12 +19,12 @@ fetch(`http://localhost:3000/api/cameras/${leId}`)
                         <h3 class="card-titre">${jsonProduct.name}</h3>
                         <p class="card-description">${jsonProduct.description}</p>
                         <p class="card-prix-produit">${jsonProduct.price/100},00€</p>
-                        <form>
-                        <label for="option_produit">Type de lentille : </label>
-                        <select id="option_produit" name="option_produit"></select>
-                        </form>
+                        
+                        <p class="input-text">Type de lentille : </label>
+                        <select id="option_produit" name="option_produit"></select></p>
+                        
                         <p class="input-text">Quantité :
-                        <input id="input2" type="number" name="tentacles" min="1" max="10" value="1"></p>
+                        <input id="input1" type="number" name="QtyArticle" min="1" max="10" value="1"></p>
                         <div class="button">
                             <a class="button1" href="../index.html">Retour Accueil</a>
                             <a class="button2" href="">Ajouter au panier</a>
@@ -35,11 +35,11 @@ fetch(`http://localhost:3000/api/cameras/${leId}`)
                 
             for(let i = 0; i < jsonProduct.lenses.length; i++)
                 document.querySelector('#option_produit').innerHTML += `<option value="${i}">${jsonProduct.lenses[i]}</option>`;
-                console.log(jsonProduct.lenses);
 
+//-------------------------------------Gestion du panier---------------------------------------
+        //Récupération des données sélectionnées par l'utilisateur 
                 //Sélection de l'id de la quantité
-                const idQty = document.querySelector("#input2");
-                console.log(idQty);
+                const idQty = document.querySelector("#input1");
 
                 //Sélection bouton Ajouter au panier
                 const btn_ajouterPanier = document.querySelector(".button2");
@@ -50,15 +50,13 @@ fetch(`http://localhost:3000/api/cameras/${leId}`)
                     event.preventDefault();
 
                 //Sélection de l'id de l'option
-                const idForm = document.querySelector("#option_produit").options[document.querySelector("#option_produit").selectedIndex].text;;
-                console.log(idForm);
+                const idForm = document.querySelector("#option_produit").options[document.querySelector("#option_produit").selectedIndex].text;
+
 
                 //Mettre le choix de l'utilisateur dans une variable
                 const choixQty = idQty.value;
-                console.log(choixQty);
 
-
-                    //Récupération valeurs du produit
+                //Récupération valeurs du produit
                 let selectProduit = {
                     Id_Produit: leId,
                     Nom: jsonProduct.name,
@@ -67,13 +65,39 @@ fetch(`http://localhost:3000/api/cameras/${leId}`)
                     Quantité: choixQty
                 }
                 console.log(selectProduit);
-                })
 
-                
-                
+//-------------------------------------Local Storage---------------------------------------
+                //Déclaration variable stockProductLocalStorage et lecture/conversion des données au format JSON (JSON.parse)
+                let stockProductLocalStorage = JSON.parse(localStorage.getItem("product"));
+                console.log(stockProductLocalStorage);
+
+                //message
+                const messageValidation = () =>{
+                    if(window.confirm(`Confirmation de l'ajout au panier du modèle ${jsonProduct.name} avec l'option ${idForm} pour consulter le panier clic sur OK ou ANNULER pur continuer vos achats`)){
+                        window.location.href = "panier.html";
+                    }else{
+                        window.location.href = "../index.html";  
+                    };
+                }
+
+                //Fonction ajout du produit dans le localStorage
+                const productVersLocalStorage = () => {
+                    stockProductLocalStorage.push(selectProduit);
+                    localStorage.setItem("product", JSON.stringify(stockProductLocalStorage));
+                }
+                //Verifie si la clé existe déjà on rajoute des items/valeurs
+                if(stockProductLocalStorage){
+                    productVersLocalStorage();
+                    messageValidation();
+                }
+                //Si la clé n'éxiste pas on la crée, enregistrement/conversion des données au format Objet (JSON.stringify)
+                else{
+                    stockProductLocalStorage = [];
+                    productVersLocalStorage();
+                    console.log(stockProductLocalStorage);
+                    messageValidation();
+                    }
+                })
             }
         ));
-
-//-------------------------------------Gestion du panier---------------------------------------
-//Récupération des données sélectionnées par l'utilisateur 
 
