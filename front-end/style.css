@@ -44,8 +44,12 @@ header {
     border-radius: 0 0 25px 25px;
 }
 
+.bannière img {
+    width: 80%;
+}
+
 h1{
-    font-size: 3.5rem;
+    font-size: 3vw;
     font-weight: 600;
     color: black;
 }
@@ -62,7 +66,7 @@ h2{
     border: 20px solid #F3E9F1;
     border-radius:  25px;
     min-height: 200px;
-    margin: 5px 0;
+    margin: 10px 0;
     padding-bottom: 40px;
 }
 
@@ -74,6 +78,7 @@ h2{
     border-radius: 0 0 25px 25px;
     min-height: 200px;
     padding-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 footer{
@@ -140,7 +145,7 @@ h3{
 }
 
 .productLink{
-    font-size: 1.5rem;
+    font-size: 1.8vw;
     background-color: #f5dbf0;
     padding: 15px;
     border-radius: 5px;
