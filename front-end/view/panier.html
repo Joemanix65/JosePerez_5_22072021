@@ -7,24 +7,60 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="../style.css">
     <title>Votre Panier</title>
 </head>
 <body>
-    <!--Produits dans le panier-->
-    <div class="container-panier">
-        <h3>Produits Sélectionnés</h3>
-    </div>
-     <!-- FOOTER -->
-     <footer>
-        <div class="foot">
-            <p class="footP">Nos Partenaires:</p>
+    <div id="container">
+        <!-- header -->
+        <header>
+            <img src="../img/logo.png" alt="logo du site Orinoco" class="logo">
+            <nav class="navbar">
                 <ul>
-                    <li><a href="Oribook.com">Oribook.com</a></li>
-                    <li><a href="Oritextil.com">Oritextil.com</a></li>
+                    <a href="../view/panier.html"><img src="../img/panier.png" /></a>
                 </ul>
+            </nav>
+        </header>
+        <!-- MAIN -->
+        <div class="container-panier">
+            <div class="titreH1">
+                
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Article</th>
+                        <th>Nom</th>
+                        <th>Option</th>
+                        <th>Prix Unitaire</th>
+                        <th>Quantité</th>
+                        <th>Supprimer article</th>
+                        <th>Prix Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Emplacement tableau-->
+                </tbody> 
+                <tfoot>
+
+                </tfoot>  
+            </table>
+            <div class="button">
+                <a class="button1" href="../index.html">Accueil</a>
+                <a class="button2" href="">Vider le panier</a>
+            </div>
         </div>
-        <a href="mailto">Contact</a>
+        <!-- FOOTER -->
+        <footer>
+            <div class="foot">
+                <p class="footP">Nos Partenaires:</p>
+                    <ul>
+                        <li><a href="Oribook.com">Oribook.com</a></li>
+                        <li><a href="Oritextil.com">Oritextil.com</a></li>
+                    </ul>
+            </div>
+            <a href="mailto">Contact</a>
         </footer>
     </div>
     <script src="../js/panier.js"></script> 

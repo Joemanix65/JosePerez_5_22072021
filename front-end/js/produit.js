@@ -59,6 +59,7 @@ fetch(`http://localhost:3000/api/cameras/${leId}`)
                 //Récupération valeurs du produit
                 let selectProduit = {
                     Id_Produit: leId,
+                    Article: jsonProduct.imageUrl,
                     Nom: jsonProduct.name,
                     Prix: jsonProduct.price/100,
                     Option: idForm,
@@ -99,5 +100,9 @@ fetch(`http://localhost:3000/api/cameras/${leId}`)
                     }
                 })
             }
-        ));
+        ))
 
+        .catch((err) => {
+            console.log("Erreur: "+ err)
+            alert ("Un problème empêche le chargement des produits sur la page")
+        });
