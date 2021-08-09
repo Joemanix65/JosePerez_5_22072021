@@ -30,26 +30,49 @@ if(stockProductLocalStorage === null){
     for(j = 0; j < stockProductLocalStorage.length; j++ ){
         panierPlein = panierPlein + `
             <tr>
-                <td width=25% heidth="auto"><img class="img-cam-panier" src="${stockProductLocalStorage[j].Article}"alt="image de la caméra"></td>
+                <td width=22% heidth="auto"><img class="img-cam-panier" src="${stockProductLocalStorage[j].Article}"alt="image de la caméra"></td>
                 <td>${stockProductLocalStorage[j].Nom}</td>
                 <td>${stockProductLocalStorage[j].Option}</td>
                 <td>${stockProductLocalStorage[j].Prix}.00 €</td>
                 <td>${stockProductLocalStorage[j].Quantité}</td>
-                <td width=10% heidth="auto"><a href""><i class="far fa-times-circle"></i></a></td>
-                <td width=15% heidth="auto">${stockProductLocalStorage[j].Quantité * stockProductLocalStorage[j].Prix}.00 €</td>
+                <td width=10%><a href=""><i class="far fa-times-circle"></i></a></td>
+                <td width=15%>${stockProductLocalStorage[j].Quantité * stockProductLocalStorage[j].Prix}.00 €</td>
             </tr>
         `;
     }
     tableProdPanier.innerHTML = panierPlein;
+
+    //-----------------------Montant total du panier-------------------------------
+    //récupération des prix dans le panier
+    let sum = 0;
+    for (let k = 0 ;k < stockProductLocalStorage.length; k++){
+        sum += stockProductLocalStorage[k].Prix;
+        console.log(sum);
+    }
+
     //Affichage du tfoot avec le montant total
     const tableFoot = document.querySelector("tfoot");
     const panierTfoot = `
             <tfoot>
                 <tr>
                     <td colspan="6">Montant total</td>
-                    <td>somme</td>
+                    <td>${sum}.00€</td>
                 </tr>
             </tfoot>
         `;
     tableFoot.innerHTML = panierTfoot;
 }   
+
+//--------------------Suppression d'un article du panier-----------------------
+let btnSup = document.querySelectorAll(".far");
+console.log(btnSup);
+console.log(stockProductLocalStorage.slice(j));
+for (let l = 0; l < btnSup.length; l++){
+    btnSup[l].addEventListener("click" , () => product.slice(l));
+    console.log(stockProductLocalStorage.slice(0));
+        //stockProductLocalStorage.slice(j);
+    };
+
+
+
+//----------------------------Vider le panier----------------------------------

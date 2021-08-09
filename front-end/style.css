@@ -176,11 +176,11 @@ h3{
 
 .button{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 1.5rem;
 }
 .button1{
-    margin-right: 100px;
+    margin-right: 200px;
     background-color: rgb(217, 186, 245);
     border-radius: 5px;
     padding: 10px;
