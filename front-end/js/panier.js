@@ -35,7 +35,7 @@ if(stockProductLocalStorage === null){
                 <td>${stockProductLocalStorage[j].Option}</td>
                 <td>${stockProductLocalStorage[j].Prix}.00 €</td>
                 <td>${stockProductLocalStorage[j].Quantité}</td>
-                <td width=10%><a href=""><i class="far fa-times-circle"></i></a></td>
+                <td width=10%><a href=""class="deleteRow"><i class="far fa-times-circle"></i></a></td>
                 <td width=15%>${stockProductLocalStorage[j].Quantité * stockProductLocalStorage[j].Prix}.00 €</td>
             </tr>
         `;
@@ -46,7 +46,7 @@ if(stockProductLocalStorage === null){
     //récupération des prix dans le panier
     let sum = 0;
     for (let k = 0 ;k < stockProductLocalStorage.length; k++){
-        sum += stockProductLocalStorage[k].Prix;
+        sum += stockProductLocalStorage[k].Quantité * stockProductLocalStorage[k].Prix;
         console.log(sum);
     }
 
@@ -61,18 +61,24 @@ if(stockProductLocalStorage === null){
             </tfoot>
         `;
     tableFoot.innerHTML = panierTfoot;
-}   
+   
 
 //--------------------Suppression d'un article du panier-----------------------
-let btnSup = document.querySelectorAll(".far");
-console.log(btnSup);
-console.log(stockProductLocalStorage.slice(j));
-for (let l = 0; l < btnSup.length; l++){
-    btnSup[l].addEventListener("click" , () => product.slice(l));
-    console.log(stockProductLocalStorage.slice(0));
-        //stockProductLocalStorage.slice(j);
-    };
+    const btnSup = document.querySelectorAll(".deleteRow");
+    console.log(btnSup);
+    for (let l = 0; l < btnSup.length; l++) {
+    console.log(l);
+    btnSup[l].addEventListener("click", () => supArticle(l));
+    }
 
-
-
+    function supArticle(index) {
+        //const index = stockProductLocalStorage.indexOf ("product");
+        stockProductLocalStorage.splice(index, 1);
+        localStorage.setItem("product", JSON.stringify(stockProductLocalStorage));
+        }
+    }   
+    
 //----------------------------Vider le panier----------------------------------
+let viderPanier = document.querySelector(".button2");
+viderPanier.addEventListener("click", () => localStorage.clear()); 
+    
