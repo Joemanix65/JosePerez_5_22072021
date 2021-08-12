@@ -68,17 +68,22 @@ if(stockProductLocalStorage === null){
     console.log(btnSup);
     for (let l = 0; l < btnSup.length; l++) {
     console.log(l);
-    btnSup[l].addEventListener("click", () => supArticle(l));
+    btnSup[l].addEventListener("click", (e) => supArticle(l))
     }
 
     function supArticle(index) {
-        //const index = stockProductLocalStorage.indexOf ("product");
         stockProductLocalStorage.splice(index, 1);
         localStorage.setItem("product", JSON.stringify(stockProductLocalStorage));
-        }
+    }
+ 
+      if (btnSup.length === 0) {localStorage.clear();
+      console.log(stockProductLocalStorage);
+      console.log(btnSup.length);
+      window.location.reload();
     }   
-    
+}  
+
 //----------------------------Vider le panier----------------------------------
-let viderPanier = document.querySelector(".button2");
-viderPanier.addEventListener("click", () => localStorage.clear()); 
+const videPanier = document.querySelector(".button2");
+videPanier.addEventListener("click", () => localStorage.clear()); 
     
