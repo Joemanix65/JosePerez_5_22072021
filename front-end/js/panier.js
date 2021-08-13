@@ -30,7 +30,7 @@ if(stockProductLocalStorage === null){
     for(j = 0; j < stockProductLocalStorage.length; j++ ){
         panierPlein = panierPlein + `
             <tr>
-                <td width=22% heidth="auto"><img class="img-cam-panier" src="${stockProductLocalStorage[j].Article}"alt="image de la caméra"></td>
+                <td width=30% heidth="auto"><img class="img-cam-panier" src="${stockProductLocalStorage[j].Article}"alt="image de la caméra"></td>
                 <td>${stockProductLocalStorage[j].Nom}</td>
                 <td>${stockProductLocalStorage[j].Option}</td>
                 <td>${stockProductLocalStorage[j].Prix}.00 €</td>
@@ -85,5 +85,64 @@ if(stockProductLocalStorage === null){
 
 //------------------------------Formulaire-------------------------------------
 
+const affichageFormulaire = () => {
+    const formulaireElement = document.querySelector(".container-formulaire");
 
-    
+    const templateFormulaire = `
+    <h2>Remplissez le formulaire pour valider la commande :</h2>
+                <form>
+                    <div>
+                        <fieldset>
+                            <legend>Civilité<abbr title="Ce champ est obligatoire">*</abbr></legend>
+                            <label for="mr">M.</label>
+                            <input type="radio" id="civil" name=btnradio value="M." checked>
+                            <label for="mme">Mme</label>
+                            <input type="radio" id="civil" name=btnradio value="Mme">
+                        </fieldset>
+                    </div>
+                    <p>
+                        <label for ="nom">Nom :<abbr title="Ce champ est obligatoire">*</abbr></label>
+                        <input type="text" id="nom" name="nom" required placeholder="Entrez votre nom">
+                    </p>  
+                    <p>
+                        <label for ="prenom">Prénom :<abbr title="Ce champ est obligatoire">*</abbr></label>
+                        <input type="text" id="prenom" name="prenom" required placeholder="Entrez votre prénom">
+                    </p>
+                    <p>
+                        <label for ="mail">Adresse mail :<abbr title="Ce champ est obligatoire">*</abbr></label>
+                        <input type="email" id="mail" name="mail" required placeholder="Entrez votre adresse mail">
+                    <p>  
+                        <label for ="adresse">Adresse :<abbr title="Ce champ est obligatoire">*</abbr></label>
+                        <input type="text" id="adresse" name="adresse" required placeholder="Entrez votre adresse">
+                    </p>
+                    <p>
+                        <label for ="cp">Code postal :<abbr title="Ce champ est obligatoire">*</abbr></label>
+                        <input type="number" id="cp" name="cp" required placeholder="Entrez votre code postal">
+                    </p>    
+                    <p>
+                        <label for ="ville">Ville :<abbr title="Ce champ est obligatoire">*</abbr></label>
+                        <input type="text" id="ville" name="ville" required placeholder="Entrez votre ville">
+                    </p>
+                    <p>
+                        <button class="button3">Commander</button>
+                    </p>
+                </form>
+    `;
+    formulaireElement.insertAdjacentHTML("afterend", templateFormulaire);
+};
+//Affichage formulaire
+affichageFormulaire();
+
+//bouton pour envoyer la commande
+const btnCommande = document.querySelector(".button3");
+btnCommande.addEventListener("click", () => {
+    //Valeurs formulaire vers localStorage
+    localStorage.setItem("civilité", document.querySelector("input[name=btnradio]:checked").value);
+    console.log(document.querySelector("input[name=btnradio]:checked").value);
+    localStorage.setItem("nom", document.querySelector("#nom").value);
+    localStorage.setItem("prenom", document.querySelector("#prenom").value);
+    localStorage.setItem("mail", document.querySelector('input[name=btnradio]:checked').value);
+    localStorage.setItem("adresse", document.querySelector('input[name=btnradio]:checked').value);
+    localStorage.setItem("cp", document.querySelector('input[name=btnradio]:checked').value);
+    localStorage.setItem("ville", document.querySelector('input[name=btnradio]:checked').value);
+})
