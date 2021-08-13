@@ -186,43 +186,98 @@ h3{
     padding: 10px;
 }
 
-.button2{
-    
+.button2 {
     background-color: rgb(217, 186, 245);
     border-radius: 5px;
     padding: 10px;
 }
+
+.container-formulaire{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0 5px;
+    border: 4px solid gray;
+  }
+
+p > input{
+    width: 30vw;
+    font-family: inherit;
+    font-size: 1.2rem;
+}
+
+p > label {
+    display: block;
+}
+
+fieldset {
+    /* requis pour composer de manière appropriée les éléments
+       de formulaire sur les navigateurs fondés sur WebKit */
+    -webkit-appearance: none;
+    width : 100%;
+    border: 1px solid #333;
+    margin: 10px 0 0 0;
+    align-items: center;
+    font-family: inherit;
+    font-size: 1.4rem;
+    
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.button3 {
+    background-color: rgb(217, 186, 245);
+    border-radius: 5px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 1.5rem;
+}
+
+label{
+    font-family: inherit;
+    font-size: 1.5rem;
+}
+
 .img-cam-panier{
     width: 60%;
     min-height: auto;
     object-fit: cover;
 }
+
 table {
     width: 90%;
     border-collapse: collapse;
     border: 2px solid rgb(200,200,200);
     letter-spacing: 2px;
     font-size: 1.4rem;
-  }
+}
   
-  td, th {
+td, th {
     border: 1px solid rgb(190,190,190);
     padding: 10px 20px;
-  }
+}
   
-  th {
+th {
     background-color: rgb(235,235,235);
-  }
+}
   
-  td {
+td {
     text-align: center;
     font-size: 1.5rem;
-  }
+}
   
-  tr:nth-child(even) td {
+tr:nth-child(even) td {
     background-color: rgb(250,250,250);
-  }
+}
   
-  tr:nth-child(odd) td {
+tr:nth-child(odd) td {
     background-color: rgb(245,245,245);
-  }
+}

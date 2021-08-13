@@ -65,25 +65,25 @@ if(stockProductLocalStorage === null){
 
 //--------------------Suppression d'un article du panier-----------------------
     const btnSup = document.querySelectorAll(".deleteRow");
-    console.log(btnSup);
     for (let l = 0; l < btnSup.length; l++) {
-    console.log(l);
-    btnSup[l].addEventListener("click", (e) => supArticle(l))
+        btnSup[l].addEventListener("click", (e) => supArticle(l))
     }
 
     function supArticle(index) {
         stockProductLocalStorage.splice(index, 1);
         localStorage.setItem("product", JSON.stringify(stockProductLocalStorage));
     }
- 
-      if (btnSup.length === 0) {localStorage.clear();
-      console.log(stockProductLocalStorage);
-      console.log(btnSup.length);
-      window.location.reload();
+ //S'il ne reste plus d'article dans le panier affiche "panier vide"
+    if (btnSup.length === 0) {localStorage.clear();
+        window.location.reload();
     }   
 }  
-
 //----------------------------Vider le panier----------------------------------
-const videPanier = document.querySelector(".button2");
-videPanier.addEventListener("click", () => localStorage.clear()); 
+    const videPanier = document.querySelector(".button2");
+    videPanier.addEventListener("click", () => localStorage.clear()); 
+
+
+//------------------------------Formulaire-------------------------------------
+
+
     
