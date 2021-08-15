@@ -1,6 +1,5 @@
 //Déclaration variable stockProductLocalStorage et lecture/conversion des données au format JSON (JSON.parse)
 let stockProductLocalStorage = JSON.parse(localStorage.getItem("product"));
-console.log(stockProductLocalStorage);
 
 //------------Tableau produit panier------------
 //Sélection classe pour injection code html
@@ -54,7 +53,6 @@ if (stockProductLocalStorage === null) {
   for (let k = 0; k < stockProductLocalStorage.length; k++) {
     sum +=
       stockProductLocalStorage[k].Quantité * stockProductLocalStorage[k].Prix;
-    console.log(sum);
   };
   localStorage.setItem("montantTotal", sum);
   //Affichage du tfoot avec le montant total
@@ -156,17 +154,30 @@ const donneeForm = {
     Ville: ville.value,
   };
 
- //regex???
- const lePrenom = donneeForm.Prénom;
- console.log(lePrenom);
+ //------------Validation du formulaire-------------
+ const regExNomPrenomVille = (value) => {
+   return /^[A-Za-z\s]{3,25}$/.test(value);
+ }
+ function nomControle() {
+ const leNom = donneeForm.Nom;
+ if(regExNomPrenomVille(leNom)){
+   return true;
+   console.log("OK");
+ }else{
+   alert ("Les chiffres et les symboles ne sont pas autorisés \n 3 caractères minimum et 25 caractères maximum")
+  return false;
+  console.log("NOK");
+  console.log(leNom);
+ }
+ }
  
- console.log("hello");  
- console.log(stockProductLocalStorage);
-localStorage.setItem("donneeForm", JSON.stringify(donneeForm));
-  console.log(donneeForm);
+ if (nomControle){
+  localStorage.setItem("donneeForm", JSON.stringify(donneeForm));
+ }else{
+   alert("Données non valide, merci de renseigner des données valide!");
+ }
 
   
-
 const contact = {
   firstName: prenom.value,
   lastName: nom.value,

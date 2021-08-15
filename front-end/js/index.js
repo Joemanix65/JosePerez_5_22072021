@@ -6,9 +6,9 @@ fetch("http://localhost:3000/api/cameras")
             let affichage = "";
         for (let camera of jsonlistProduct){
          //let camera = new Camera(product); 
-        affichage += `  <div class="img-container">
-                            <img class="img-cam" src="${camera.imageUrl}" alt="image de la caméra">
-                            <div class="card-text">
+        affichage += `  <div class="img-container-index">
+                            <img class="img-cam-index" src="${camera.imageUrl}" alt="image de la caméra">
+                            <div class="card-text-index">
                                 <h3 class="card-titre">${camera.name}</h3>
                                 <p class="card-prix">${camera.price/100},00€</p>
                                 <a class="productLink" href="view/produit.html?id=${camera._id}">Plus d'infos</a>

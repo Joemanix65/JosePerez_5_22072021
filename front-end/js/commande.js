@@ -11,7 +11,7 @@ if (donneeFormLS === null) {
  
 }else{
 const cmdAffiche = `
-        <div>
+        <div class="cmd">
         <h1>Confirmation de commande</h1>
         <p> Merci pour vos achats ${donneeFormLS.Civilité} ${donneeFormLS.Nom} ${donneeFormLS.Prénom}.</p>
         <p> Votre commande n°: ${cmd} </p>
