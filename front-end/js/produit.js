@@ -69,7 +69,7 @@ fetch(`http://localhost:3000/api/cameras/${leId}`)
 
 //-------------------------------------Local Storage---------------------------------------
                 //Déclaration variable stockProductLocalStorage et lecture/conversion des données au format JSON (JSON.parse)
-                let stockProductLocalStorage = JSON.parse(localStorage.getItem("products"));
+                let stockProductLocalStorage = JSON.parse(localStorage.getItem("product"));
                 console.log(stockProductLocalStorage);
 
                 //message
@@ -84,7 +84,7 @@ fetch(`http://localhost:3000/api/cameras/${leId}`)
                 //Fonction ajout du produit dans le localStorage
                 const productVersLocalStorage = () => {
                     stockProductLocalStorage.push(selectProduit);
-                    localStorage.setItem("products", JSON.stringify(stockProductLocalStorage));
+                    localStorage.setItem("product", JSON.stringify(stockProductLocalStorage));
                 }
                 //Verifie si la clé existe déjà on rajoute des items/valeurs
                 if(stockProductLocalStorage){

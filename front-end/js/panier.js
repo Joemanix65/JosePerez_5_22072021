@@ -1,13 +1,11 @@
 //Déclaration variable stockProductLocalStorage et lecture/conversion des données au format JSON (JSON.parse)
-let stockProductLocalStorage = JSON.parse(localStorage.getItem("products"));
+let stockProductLocalStorage = JSON.parse(localStorage.getItem("product"));
 console.log(stockProductLocalStorage);
 
 //------------Tableau produit panier------------
 //Sélection classe pour injection code html
 const tableProdPanier = document.querySelector("tbody");
-console.log(tableProdPanier);
 const titrePanier = document.querySelector(".titreH1");
-console.log(titrePanier);
 //Si panier vide alors afficher "Le panier est vide"
 if (stockProductLocalStorage === null) {
   const paniertitre = `
@@ -57,8 +55,8 @@ if (stockProductLocalStorage === null) {
     sum +=
       stockProductLocalStorage[k].Quantité * stockProductLocalStorage[k].Prix;
     console.log(sum);
-  }
-
+  };
+  localStorage.setItem("montantTotal", sum);
   //Affichage du tfoot avec le montant total
   const tableFoot = document.querySelector("tfoot");
   const panierTfoot = `
@@ -80,7 +78,7 @@ if (stockProductLocalStorage === null) {
 
   function supArticle(index) {
     stockProductLocalStorage.splice(index, 1);
-    localStorage.setItem("products", JSON.stringify(stockProductLocalStorage));
+    localStorage.setItem("product", JSON.stringify(stockProductLocalStorage));
   }
   //S'il ne reste plus d'article dans le panier affiche "panier vide"
   if (btnSup.length === 0) {
@@ -146,6 +144,7 @@ affichageFormulaire();
 const btnCommande = document.querySelector(".button3");
 btnCommande.addEventListener("click", (e) => {
     e.preventDefault();
+
 //Valeurs formulaire vers localStorage
 const donneeForm = {
     Civilité: document.querySelector("input[name=btnradio]:checked").value,
@@ -156,16 +155,61 @@ const donneeForm = {
     CP: cp.value,
     Ville: ville.value,
   };
-  
-//regex???
-const lePrenom = donneeForm.Prénom;
-console.log(lePrenom);
 
-console.log("hello");
-
+ //regex???
+ const lePrenom = donneeForm.Prénom;
+ console.log(lePrenom);
+ 
+ console.log("hello");  
+ console.log(stockProductLocalStorage);
 localStorage.setItem("donneeForm", JSON.stringify(donneeForm));
   console.log(donneeForm);
 
+  
+
+const contact = {
+  firstName: prenom.value,
+  lastName: nom.value,
+  address: adresse.value,
+  city: ville.value,
+  email: mail.value
+};
+console.log(contact);
+
+const products =  [];
+for (cameras of stockProductLocalStorage) {
+  const productsId = cameras.Id_Produit;
+  products.push((productsId));
+}
+
+
+
+console.log(products);
+
+const donneeCommande = {contact, products};
+console.log(donneeCommande);
+
+const sendCmd = async function (getOrder) {
+  try{
+    const res = await fetch ("http://localhost:3000/api/cameras/order", {
+      method: "POST",
+      body: JSON.stringify(getOrder),
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    if (res.ok) {
+    const getOrder = await res.json()
+    console.log(getOrder.orderId);
+    localStorage.setItem("cmdId", getOrder.orderId);
+    }else{
+    throw new Error(`${res.statusText} (${res.status})`);
+    }
+    } catch (err) {
+    Error
+    }
+  }
+  sendCmd(donneeCommande);
   const messageCommande = () => {
     if (window.confirm(`Confirmation de la commande`)) {
       window.location.href = "commande.html";
@@ -183,27 +227,5 @@ localStorage.setItem("donneeForm", JSON.stringify(donneeForm));
    // donneeFormVersLocalStorage();
     messageCommande();
   } 
-
-
-const contact = {
-  firstName: prenom.value,
-  lastName: nom.value,
-  address: adresse.value,
-  city: ville.value,
-  email: mail.value
-};
-console.log(contact);
-const products = JSON.stringify.stockProductLocalStorage;
-console.log(products);
-const donneeCommande = (contact, products);
-console.log(donneeCommande);
-
-const validCommande = fetch("http://localhost:3000/api/cameras/order", {
-    method: "POST",
-    body: JSON.stringify(donneeCommande),
-    headers: {
-        "Content-Type": "application/json",
-    },
 })
-    });
 }
