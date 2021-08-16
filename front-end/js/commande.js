@@ -2,9 +2,7 @@
 let donneeFormLS = JSON.parse(localStorage.getItem("donneeForm"));
 let montant = localStorage.getItem("montantTotal");
 let cmd = localStorage.getItem("cmdId");
-console.log(donneeFormLS);
-console.log(montant);
-console.log(cmd);
+
 const validCmd = document.querySelector(".container-cmd");
 
 if (donneeFormLS === null) {

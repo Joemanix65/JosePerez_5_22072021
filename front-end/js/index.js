@@ -2,10 +2,8 @@ fetch("http://localhost:3000/api/cameras")
     .then((response) => 
         response.json()
     .then(jsonlistProduct => {
-            console.log(jsonlistProduct);
             let affichage = "";
-        for (let camera of jsonlistProduct){
-         //let camera = new Camera(product); 
+        for (let camera of jsonlistProduct){ 
         affichage += `  <div class="img-container-index">
                             <img class="img-cam-index" src="${camera.imageUrl}" alt="image de la caméra">
                             <div class="card-text-index">

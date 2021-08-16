@@ -2,7 +2,7 @@
 let stockProductLocalStorage = JSON.parse(localStorage.getItem("product"));
 
 //------------Tableau produit panier------------
-//Sélection classe pour injection code html
+//Sélection des classes pour injection code html
 const tableProdPanier = document.querySelector("tbody");
 const titrePanier = document.querySelector(".titreH1");
 //Si panier vide alors afficher "Le panier est vide"
@@ -12,7 +12,7 @@ if (stockProductLocalStorage === null) {
         <h1>Le panier est vide</h1>
     </div>
     `;
-    titrePanier.innerHTML = paniertitre;
+  titrePanier.innerHTML = paniertitre;
 } else {
   //Si panier non vide affichage des produits du localStorage
   //Affichage du titre "Votre panier"
@@ -21,8 +21,8 @@ if (stockProductLocalStorage === null) {
         <h1>Votre panier</h1>
     </div>
     `;
-    titrePanier.innerHTML = paniertitre;
-   
+  titrePanier.innerHTML = paniertitre;
+
   //Affichage des articles dans le tbody du tableau
   let panierPlein = [];
   for (j = 0; j < stockProductLocalStorage.length; j++) {
@@ -53,7 +53,7 @@ if (stockProductLocalStorage === null) {
   for (let k = 0; k < stockProductLocalStorage.length; k++) {
     sum +=
       stockProductLocalStorage[k].Quantité * stockProductLocalStorage[k].Prix;
-  };
+  }
   localStorage.setItem("montantTotal", sum);
   //Affichage du tfoot avec le montant total
   const tableFoot = document.querySelector("tfoot");
@@ -71,7 +71,6 @@ if (stockProductLocalStorage === null) {
   const btnSup = document.querySelectorAll(".deleteRow");
   for (let l = 0; l < btnSup.length; l++) {
     btnSup[l].addEventListener("click", (e) => supArticle(l));
-    
   }
 
   function supArticle(index) {
@@ -84,16 +83,16 @@ if (stockProductLocalStorage === null) {
     window.location.reload();
   }
 
-//----------------------------Vider le panier----------------------------------
-const videPanier = document.querySelector(".button2");
-videPanier.addEventListener("click", () => localStorage.clear());
+  //----------------------------Vider le panier----------------------------------
+  const videPanier = document.querySelector(".button2");
+  videPanier.addEventListener("click", () => localStorage.clear());
 
-//------------------------------Formulaire-------------------------------------
+  //------------------------------Formulaire-------------------------------------
 
-const affichageFormulaire = () => {
-  const formulaireElement = document.querySelector(".container-formulaire");
+  const affichageFormulaire = () => {
+    const formulaireElement = document.querySelector(".container-formulaire");
 
-  const templateFormulaire = `
+    const templateFormulaire = `
     <h2>Remplissez le formulaire pour valider la commande :</h2>
                 <form>
                     <div>
@@ -133,110 +132,149 @@ const affichageFormulaire = () => {
                     </p>
                 </form>
     `;
-  formulaireElement.insertAdjacentHTML("afterend", templateFormulaire);
-};
-//Affichage formulaire
-affichageFormulaire();
+    formulaireElement.insertAdjacentHTML("afterend", templateFormulaire);
+  };
+  //Affichage formulaire
+  affichageFormulaire();
 
-//bouton pour envoyer la commande
-const btnCommande = document.querySelector(".button3");
-btnCommande.addEventListener("click", (e) => {
+  //bouton pour envoyer la commande
+  const btnCommande = document.querySelector(".button3");
+  btnCommande.addEventListener("click", (e) => {
     e.preventDefault();
 
-//Valeurs formulaire vers localStorage
-const donneeForm = {
-    Civilité: document.querySelector("input[name=btnradio]:checked").value,
-    Nom: nom.value,
-    Prénom: prenom.value,
-    Mail: mail.value,
-    Adresse: adresse.value,
-    CP: cp.value,
-    Ville: ville.value,
-  };
-
- //------------Validation du formulaire-------------
- const regExNomPrenomVille = (value) => {
-   return /^[A-Za-z\s]{3,25}$/.test(value);
- }
- function nomControle() {
- const leNom = donneeForm.Nom;
- if(regExNomPrenomVille(leNom)){
-   return true;
-   console.log("OK");
- }else{
-   alert ("Les chiffres et les symboles ne sont pas autorisés \n 3 caractères minimum et 25 caractères maximum")
-  return false;
-  console.log("NOK");
-  console.log(leNom);
- }
- }
- 
- if (nomControle){
-  localStorage.setItem("donneeForm", JSON.stringify(donneeForm));
- }else{
-   alert("Données non valide, merci de renseigner des données valide!");
- }
-
-  
-const contact = {
-  firstName: prenom.value,
-  lastName: nom.value,
-  address: adresse.value,
-  city: ville.value,
-  email: mail.value
-};
-console.log(contact);
-
-const products =  [];
-for (cameras of stockProductLocalStorage) {
-  const productsId = cameras.Id_Produit;
-  products.push((productsId));
-}
-
-
-
-console.log(products);
-
-const donneeCommande = {contact, products};
-console.log(donneeCommande);
-
-const sendCmd = async function (getOrder) {
-  try{
-    const res = await fetch ("http://localhost:3000/api/cameras/order", {
-      method: "POST",
-      body: JSON.stringify(getOrder),
-      headers: {
-        "Content-Type": "application/json",
+    //Valeurs formulaire vers localStorage
+    const donneeForm = {
+      Civilité: document.querySelector("input[name=btnradio]:checked").value,
+      Nom: nom.value,
+      Prénom: prenom.value,
+      Mail: mail.value,
+      Adresse: adresse.value,
+      CP: cp.value,
+      Ville: ville.value,
+    };
+    //------------Validation du formulaire-------------
+    const textAlert = (value) => {
+      return  `${value} : Les chiffres et les symboles ne sont pas autorisés \n 3 caractères minimum et 25 caractères maximum`
+    };
+    const regExNomPrenomVille = (value) => {
+      return /^[A-Za-z]{3,25}$/.test(value);
+    };
+    const regExCP = (value) => {
+      return /^[0-9]{5}$/.test(value);
+    };
+    const regExMail = (value) => {
+      return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
+    };
+    const regExAdresse = (value) => {
+      return /^[A-Za-z0-9\s]{6,40}$/.test(value);
+    };
+    function nomControle() {
+      const leNom = donneeForm.Nom;
+      if (regExNomPrenomVille(leNom)) {
+        return true;
+      } else {
+        alert(textAlert("Nom"));
+        return false;
       }
-    })
-    if (res.ok) {
-    const getOrder = await res.json()
-    console.log(getOrder.orderId);
-    localStorage.setItem("cmdId", getOrder.orderId);
-    }else{
-    throw new Error(`${res.statusText} (${res.status})`);
-    }
-    } catch (err) {
-    Error
-    }
-  }
-  sendCmd(donneeCommande);
-  const messageCommande = () => {
-    if (window.confirm(`Confirmation de la commande`)) {
-      window.location.href = "commande.html";
+    };
+    function prenomControle() {
+      const lePrenom = donneeForm.Prénom;
+      if (regExNomPrenomVille(lePrenom)) {
+        return true;
+      } else {
+        alert(textAlert("Prénom"));
+        return false;
+      }
+    };
+    function villeControle() {
+      const laVille = donneeForm.Ville;
+      if (regExNomPrenomVille(laVille)) {
+        return true;
+      } else {
+        alert(textAlert("Ville"));
+        return false;
+      }
+    };
+    function cpControle() {
+      const leCP = donneeForm.CP;
+      if (regExCP(leCP)) {
+        return true;
+      } else {
+        alert("Le code postal doit être composé de 5 chiffres");
+        return false;
+      }
+    };
+    function mailControle() {
+      const leMail = donneeForm.Mail;
+      if (regExMail(leMail)) {
+        return true;
+      } else {
+        alert("L'adresse mail n'est pas valide");
+        return false;
+      }
+    };
+    function adresseControle() {
+      const lAdresse = donneeForm.Adresse;
+      if (regExAdresse(lAdresse)) {
+        return true;
+      } else {
+        alert("L'adresse n'est pas valide");
+        return false;
+      }
+    };
+    if (nomControle() && prenomControle() && villeControle() && cpControle() && mailControle() && adresseControle()) {
+      localStorage.setItem("donneeForm", JSON.stringify(donneeForm));
+      //messageCommande();
     } else {
-      window.location.href = "../index.html";
+      return alert("Données non valide, merci de renseigner des données valide!");
+    };
+
+    const contact = {
+      firstName: prenom.value,
+      lastName: nom.value,
+      address: adresse.value,
+      city: ville.value,
+      email: mail.value,
+    };
+
+    const products = [];
+    for (cameras of stockProductLocalStorage) {
+      const productsId = cameras.Id_Produit;
+      products.push(productsId);
     }
-  };
 
-  /*const donneeFormVersLocalStorage = () => {
-    stockFormLocalStorage.push(donneeForm);
-    localStorage.setItem("forms", JSON.stringify(stockFormLocalStorage));
-  };*/
+    const donneeCommande = { contact, products };
 
-  if (donneeForm) {
-   // donneeFormVersLocalStorage();
-    messageCommande();
-  } 
-})
+    const sendCmd = async function (getOrder) {
+      try {
+        const res = await fetch("http://localhost:3000/api/cameras/order", {
+          method: "POST",
+          body: JSON.stringify(getOrder),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (res.ok) {
+          const getOrder = await res.json();
+          localStorage.setItem("cmdId", getOrder.orderId);
+        } else {
+          throw new Error(`${res.statusText} (${res.status})`);
+        }
+      } catch (err) {
+        Error;
+      }
+    };
+    sendCmd(donneeCommande);
+    const messageCommande = () => {
+      if (window.confirm(`Confirmation de la commande`)) {
+        window.location.href = "commande.html";
+      } else {
+        window.location.href = "../index.html";
+      }
+    };
+
+    if (donneeForm) {
+      messageCommande();
+    }
+  });
 }
