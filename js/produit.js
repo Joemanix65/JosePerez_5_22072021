@@ -72,7 +72,7 @@ fetch(`http://localhost:3000/api/cameras/${leId}`)
                     if(window.confirm(`Confirmation de l'ajout au panier du modèle ${jsonProduct.name} avec l'option ${idForm} pour consulter le panier clic sur OK ou ANNULER pur continuer vos achats`)){
                         window.location.href = "panier.html";
                     }else{
-                        window.location.href = "../index.html";  
+                        return window.location.href = "../index.html";  
                     };
                 }
 
