@@ -70,6 +70,7 @@ fetch(`http://localhost:3000/api/cameras/${leId}`)
                 //message
                 const messageValidation = () =>{
                     if(window.confirm(`Confirmation de l'ajout au panier du modèle ${jsonProduct.name} avec l'option ${idForm} pour consulter le panier clic sur OK ou ANNULER pur continuer vos achats`)){
+                        productVersLocalStorage();
                         window.location.href = "panier.html";
                     }else{
                         return window.location.href = "../index.html";  
@@ -83,13 +84,11 @@ fetch(`http://localhost:3000/api/cameras/${leId}`)
                 }
                 //Verifie si la clé existe déjà on rajoute des items/valeurs
                 if(stockProductLocalStorage){
-                    productVersLocalStorage();
                     messageValidation();
                 }
                 //Si la clé n'éxiste pas on la crée, enregistrement/conversion des données au format Objet (JSON.stringify)
                 else{
                     stockProductLocalStorage = [];
-                    productVersLocalStorage();
                     console.log(stockProductLocalStorage);
                     messageValidation();
                     }
