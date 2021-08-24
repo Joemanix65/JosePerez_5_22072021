@@ -157,7 +157,7 @@ if (stockProductLocalStorage === null) {
       return  `${value} : Les chiffres et les symboles ne sont pas autorisés \n 3 caractères minimum et 25 caractères maximum`
     };
     const regExNomPrenomVille = (value) => {
-      return /^[A-Z][A-Za-z\é\è\ê\-]{3,25}$/.test(value);
+      return /^[A-Za-z\é\è\ê\-]{3,25}$/.test(value);
     };
     const regExCP = (value) => {
       return /^[0-9]{5}$/.test(value);
